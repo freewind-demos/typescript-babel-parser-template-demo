@@ -1,9 +1,14 @@
-import {parse} from '@babel/parser'
+import template from "@babel/template";
+import generate from "@babel/generator";
+import * as t from "@babel/types";
 
-const ast = parse(`
-function hello(name) {
-  console.log(\`Hello, \${name}!\`)
-}
-`,);
+const buildRequire = template(`
+  const IMPORT_NAME = require(SOURCE);
+`);
 
-console.log(JSON.stringify(ast, null, 4))
+const ast: t.Node = buildRequire({
+  IMPORT_NAME: t.identifier("myModule"),
+  SOURCE: t.stringLiteral("my-module"),
+}) as any;
+
+console.log(generate(ast).code);

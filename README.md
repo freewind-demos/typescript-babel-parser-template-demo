@@ -1,7 +1,7 @@
-TypeScript Babel Parser Parse to AST Demo
-=========================================
+TypeScript Babel Parser Template Demo
+=====================================
 
-使用`@babel/parser`将一段javascript代码解析成AST树。
+template中的变量要么是`%%importName%%`，要么是全大写`IMPORT_NAME`
 
 ```
 npm install
